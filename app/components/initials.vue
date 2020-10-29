@@ -14,6 +14,9 @@
       |женщина
   customSelect(:values='clientType' type='checkbox' name='Группа клиентов')
   customSelect(:values='doctors' type='radio' name='Лечаший врач')
+  label.sms
+    input(type="checkbox" v-model="sms" @change='cons').sms__input
+    |не отправлять смс
 </template>
 <script>
   import customSelect from './custom-select.vue'
@@ -21,14 +24,17 @@
     data(){
       return {
         clientType:['VIP', 'Проблемные', 'ОМС'],
-        doctors:['Иванов', 'Захаров', 'Чернышева']
+        doctors:['Иванов', 'Захаров', 'Чернышева'],
+        sms:false
       }
     },
     components:{
       customSelect
     },
     methods:{
-      
+      cons(){
+        console.log(this.sms)
+      }
     },
     mounted(){
     }
