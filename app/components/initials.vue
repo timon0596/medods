@@ -12,12 +12,11 @@
     label
       <input type="radio" name="gender">
       |женщина
-  customMultiSelect(:clientType='clientType')
-  customSingleSelect(:doctors='doctors')
+  customSelect(:values='clientType' type='checkbox' name='Группа клиентов')
+  customSelect(:values='doctors' type='radio' name='Лечаший врач')
 </template>
 <script>
-  import customMultiSelect from './custom-multiple-select.vue'
-  import customSingleSelect from './custom-single-select.vue'
+  import customSelect from './custom-select.vue'
   export default {
     data(){
       return {
@@ -26,8 +25,7 @@
       }
     },
     components:{
-      customMultiSelect,
-      customSingleSelect
+      customSelect
     },
     methods:{
       
