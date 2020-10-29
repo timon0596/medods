@@ -7,10 +7,11 @@
     .custom-select__option(v-for='option,index in values')
       label
         input(:type="type" :value='option' @change='handleClientTypeSelect' v-model='selectedValues')
+        checkbox
         |{{option}}
 </template>
 <script>
-
+  import checkbox from './custom-checkbox.vue'
   export default {
     data(){
       return {
@@ -20,15 +21,14 @@
     },
     props:['values','type','name'],
     components:{
-
+      checkbox
     },
     methods:{
       handleClientTypeSelect(e){
-        console.log(this.selectedValues)
+        this.$emit('option-select',this.selectedValues)
       },
       expandToggle(){
         this.expanded=!this.expanded
-        console.log(this.expanded)
       }
       
     },
@@ -37,7 +37,9 @@
   }
 </script>
 <style lang="sass">
+@import './../vars.sass'
 .custom-select
+  padding: 5px
   &__options
     display: none
     grid-gap: 10px
@@ -56,9 +58,9 @@
     align-items: center
     transform: translate(0, 25%)
     border: 10px solid transparent
-    border-top: 10px solid #000
+    border-top: 10px solid $blue
 
     &_active
-      transform: rotate(180deg) translate(0,25%)
+      transform: rotate(180deg) translate(0,12%)
 
 </style>
