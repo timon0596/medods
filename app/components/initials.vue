@@ -8,19 +8,18 @@
     input(type='tel' ref='tel' placeholder='номер телефона' @focus='telFocused=true' @blur='telFocused=false' v-model='initialsForm.tel' :class='{"error":$v.initialsForm.tel.$invalid}')
     .initials-form__pattern(v-if='$v.initialsForm.tel.$invalid&&!telFocused') 7 *** *** ****  
   .initials-form__gender
-    label
-      <input type='radio' name='gender' value='male' v-model='initialsForm.gender'>
-      checkbox
-      |мужчина
-    label
-      <input type='radio' name='gender' value='female' v-model='initialsForm.gender'>
-      checkbox
-      |женщина
-  customSelect(:values='clientType' title='выберите минимум 1 значение' type='checkbox' @option-select='handleClientTypeOptionSelect($event)' name='Группа клиентов'  :class='{"error error_select":!$v.initialsForm.clientType.required}')
+    label.initials-form__radio
+      input(value='мужчина' type='radio' v-model='initialsForm.gender' @change='gender')
+      checkbox(initVal='мужчина' :val='initialsForm.gender')
+      |Мужчина
+    label.initials-form__radio
+      input(value='женщина' type='radio' v-model='initialsForm.gender' @change='gender')
+      checkbox(initVal='женщина' :val='initialsForm.gender')
+      |Женщина
+  customSelect(:values='clientType' :error='!$v.initialsForm.clientType.required' title='выберите минимум 1 значение' type='checkbox' @option-select='handleClientTypeOptionSelect($event)' name='Группа клиентов')
   customSelect(:values='doctors' type='radio' name='Лечаший врач' @option-select='handleDoctorOptionSelect')
-  label.initials-form__sms
-    input(type='checkbox' v-model='initialsForm.sms')
-    checkbox
+  .initials-form__sms
+    checkbox(type='checkbox' v-model='initialsForm.sms')
     |не отправлять смс
   .initials-form__buttons
     .button.button_clear(@click='clear') очистить
@@ -68,7 +67,9 @@
       checkbox
     },
     methods:{
-
+      gender(){
+        console.log(this.initialsForm.gender)
+      },
       clear(){
         Object.keys(this.initialsForm).forEach((el,i)=>{
           this.initialsForm[el] = null

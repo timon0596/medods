@@ -1,13 +1,13 @@
 <template lang="pug">
-.custom-select(@click='expandToggle')
-  .custom-select__header
+.custom-select
+  .custom-select__header(@click='expandToggle')
+    .custom-select__error(v-if='error') !
     .custom-select__name {{name}}
     .custom-select__expand(:class='{"custom-select__expand_active": expanded}')
-  .custom-select__options(:class='{"custom-select__options_expanded": expanded}')
-    label.custom-select__option(v-for='option,index in values')
-      input(:type="type" :value='option' @change='handleClientTypeSelect' v-model='selectedValues')
-      checkbox
-      |{{option}}
+  transition(name='options')  
+    .custom-select__options(v-if='expanded')
+      .custom-select__option(v-for='option,index in values')
+        |{{option}}
 </template>
 <script>
   import checkbox from './custom-checkbox.vue'
@@ -18,7 +18,7 @@
         expanded:false
       }
     },
-    props:['values','type','name'],
+    props:['values','type','name','error'],
     components:{
       checkbox
     },
@@ -41,12 +41,25 @@
   display: grid
   grid-gap: 10px
   padding: 5px
-  &__options
-    display: none
-    grid-gap: 10px
+  border-top-left-radius: 3px
 
-    &_expanded
-      display: grid
+  &__error
+    position: absolute
+    left: 0
+    top: 0
+    width: 20px
+    height: 100%
+    font-size: 25px
+    transform: translate(-100%, 0)
+    color: $error
+    display: flex
+    justify-content: center
+    align-items: center
+
+  &__options
+    display: grid
+    grid-gap: 10px
+    transform-origin: 0 0
 
   &__option
     display: grid
@@ -55,6 +68,7 @@
     justify-content: start
 
   &__header
+    position: relative
     height: 25px
     display: flex
     justify-content: space-between
@@ -68,6 +82,8 @@
     width: 12px
     height: 12px
     cursor: pointer
+    transition: transform 0.25s ease
+
 
     &:after
       position: absolute
@@ -79,11 +95,18 @@
       border-left: 0
       border-top: 0
       border-radius: 3px
+
       transform-origin: 100% 100%
       transform: translate(-50%, 0) rotate(45deg)
       box-sizing: border-box
 
     &_active
       transform: rotate(180deg)
+.options-enter-active,
+.options-leave-active
+  transition: all 0.25s
+.options-enter,
+.options-leave-to
+  transform: scale(1, 0)
 
 </style>
