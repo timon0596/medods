@@ -1,14 +1,13 @@
 <template lang="pug">
-.custom-select
+.custom-select(@click='expandToggle')
   .custom-select__header
     .custom-select__name {{name}}
-    .custom-select__expand(@click='expandToggle' :class='{"custom-select__expand_active": expanded}')
+    .custom-select__expand(:class='{"custom-select__expand_active": expanded}')
   .custom-select__options(:class='{"custom-select__options_expanded": expanded}')
-    .custom-select__option(v-for='option,index in values')
-      label
-        input(:type="type" :value='option' @change='handleClientTypeSelect' v-model='selectedValues')
-        checkbox
-        |{{option}}
+    label.custom-select__option(v-for='option,index in values')
+      input(:type="type" :value='option' @change='handleClientTypeSelect' v-model='selectedValues')
+      checkbox
+      |{{option}}
 </template>
 <script>
   import checkbox from './custom-checkbox.vue'
@@ -39,6 +38,8 @@
 <style lang="sass">
 @import './../vars.sass'
 .custom-select
+  display: grid
+  grid-gap: 10px
   padding: 5px
   &__options
     display: none
@@ -47,20 +48,42 @@
     &_expanded
       display: grid
 
+  &__option
+    display: grid
+    grid-auto-flow: column
+    grid-gap: 5px
+    justify-content: start
+
   &__header
+    height: 25px
     display: flex
     justify-content: space-between
     align-items: center
 
   &__expand
+    position: relative
     display: flex
     justify-content: center
     align-items: center
-    transform: translate(0, 25%)
-    border: 10px solid transparent
-    border-top: 10px solid $blue
+    width: 12px
+    height: 12px
+    cursor: pointer
+
+    &:after
+      position: absolute
+      content: ''
+      display: block
+      width: 100%
+      height: 100%
+      border: 3px solid $blue
+      border-left: 0
+      border-top: 0
+      border-radius: 3px
+      transform-origin: 100% 100%
+      transform: translate(-50%, 0) rotate(45deg)
+      box-sizing: border-box
 
     &_active
-      transform: rotate(180deg) translate(0,12%)
+      transform: rotate(180deg)
 
 </style>

@@ -18,11 +18,6 @@
 
     },
     methods:{
-      handleClientTypeSelect(e){
-        console.log(this.selectedValues)
-
-      }
-      
     },
     mounted(){
     }

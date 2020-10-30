@@ -1,12 +1,12 @@
 <template lang='pug'>
 .initials-form
-  input(type='text' placeholder='фамилия' v-model='initialsForm.surname' :class='{"error": !$v.initialsForm.surname.required}')
-  input(type='text' placeholder='имя' v-model='initialsForm.name' :class='{"error": !$v.initialsForm.name.required}')
-  input(type='text' placeholder='отчество' v-model='initialsForm.lastname')
+  input(type='text' placeholder='фамилия' v-model='initialsForm.surname' :class='{"error": !$v.initialsForm.surname.required||!$v.initialsForm.surname.alpha}')
+  input(type='text' placeholder='имя' v-model='initialsForm.name' :class='{"error": !$v.initialsForm.name.required||!$v.initialsForm.name.alpha}')
+  input(type='text' placeholder='отчество' v-model='initialsForm.lastname' :class='{error:!$v.initialsForm.lastname.alpha}')
   input(type='date' placeholder='дата рождения' v-model='initialsForm.birthday' :class='{"error": !$v.initialsForm.birthday.required}')
   .initials-form__tel
     input(type='tel' ref='tel' placeholder='номер телефона' @focus='telFocused=true' @blur='telFocused=false' v-model='initialsForm.tel' :class='{"error":$v.initialsForm.tel.$invalid}')
-    .initials-form__pattern(v-if='$v.initialsForm.tel.$invalid&&!telFocused') 7**********  
+    .initials-form__pattern(v-if='$v.initialsForm.tel.$invalid&&!telFocused') 7 *** *** ****  
   .initials-form__gender
     label
       <input type='radio' name='gender' value='male' v-model='initialsForm.gender'>
@@ -17,17 +17,21 @@
       checkbox
       |женщина
   customSelect(:values='clientType' title='выберите минимум 1 значение' type='checkbox' @option-select='handleClientTypeOptionSelect($event)' name='Группа клиентов'  :class='{"error error_select":!$v.initialsForm.clientType.required}')
-  customSelect(:values='doctors' type='radio' name='Лечаший врач')
+  customSelect(:values='doctors' type='radio' name='Лечаший врач' @option-select='handleDoctorOptionSelect')
   label.initials-form__sms
     input(type='checkbox' v-model='initialsForm.sms')
     checkbox
     |не отправлять смс
+  .initials-form__buttons
+    .button.button_clear(@click='clear') очистить
+    .button.button_accept(:class='{button_disabled: $v.initialsForm.$invalid}' @click='accept') принять
 </template>
 <script>
   import customSelect from './custom-select.vue'
   import checkbox from './custom-checkbox.vue'
   import {required,minLength,helpers} from 'vuelidate/lib/validators'
   const numeric = helpers.regex('numeric', /^7 \d{3} \d{3} \d{4}$/)
+  const alpha = helpers.regex('alpha', /^[a-zа-яё]*$/i)
   export default {
     data(){
       return {
@@ -37,7 +41,7 @@
         telString:'',
         initialsForm:{
           sms:false,
-          gender: 'male',
+          gender: null,
           name:null,
           surname:null,
           lastname:null,
@@ -49,9 +53,10 @@
       }
     },
     validations:{
-      initialsForm:{
-        name: {required},
-        surname:{required},
+      initialsForm:{  
+        name: {required,alpha},
+        surname:{required,alpha},
+        lastname:{alpha},
         birthday:{required},
         tel:{required,numeric},
         clientType:{required},
@@ -63,6 +68,22 @@
       checkbox
     },
     methods:{
+
+      clear(){
+        Object.keys(this.initialsForm).forEach((el,i)=>{
+          this.initialsForm[el] = null
+        })        
+      },
+      accept(){
+        if(this.$v.initialsForm.$invalid) return
+
+        this.$emit('form-data-ready',this.initialsForm)
+        console.log(this.initialsForm)
+      }
+      ,
+      handleDoctorOptionSelect(e){
+        this.doctor = e
+      },
       handleClientTypeOptionSelect(e){
         this.initialsForm.clientType=[...e]
       },
@@ -87,16 +108,37 @@
 <style lang='sass'>
 @import './../vars.sass'
 
+.button
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 10px 20px
+  border-radius: 3px
+  border: 1px solid
+  cursor: pointer
+  &:active,
+  &_disabled
+    opacity: 0.5
+    cursor: default
+
+  &_accept
+    color: $blue
+    border-color: $blue
+
+  &_clear
+    color: $warn
+    border-color: $warn
+
 input
   width: 100%
-  height: 24px  
   border: 1px solid #cccccc
   border-radius: 3px
   outline: none
   color: #cccccc
   font-size: 11px
   font-family: Tahoma
-
+  padding: 10px 20px
+  box-sizing: border-box
 
 .initials-form
   min-width: 320px
@@ -106,8 +148,27 @@ input
   padding: 40px
   border-radius: 5px
   border: 1px solid #ccc
+
+  &__buttons
+    display: flex
+    justify-content: space-between
+  &__sms
+    display: grid 
+    grid-auto-flow: column  
+    grid-gap: 5px
+    justify-content: center 
+  &__tel
+    display: grid
+    grid-gap: 5px
+    justify-items: center
+
+    input
+      justify-self: stretch
+
   &__gender
     display: flex
+    justify-content: space-around
+
   label
     display: grid
     grid-auto-flow: column
