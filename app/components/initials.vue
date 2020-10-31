@@ -22,12 +22,14 @@
     title='выберите минимум 1 значение' 
     type='checkbox' 
     @option-select='handleClientTypeOptionSelect($event)' 
-    name='Группа клиентов')
+    name='Группа клиентов'
+    :model='initialsForm.clientType')
   customSelect(
     :values='doctors'
     type='radio'
     name='Лечаший врач'
-    @option-select='handleDoctorOptionSelect')
+    @option-select='handleDoctorOptionSelect'
+    :model='initialsForm.doctor')
   .initials-form__sms
     checkbox(type='checkbox' v-model='initialsForm.sms')
     |не отправлять смс
@@ -80,7 +82,7 @@
       clear(){
         Object.keys(this.initialsForm).forEach((el,i)=>{
           this.initialsForm[el] = null
-        })        
+        })
       },
       accept(){
         if(this.$v.initialsForm.$invalid) return
@@ -89,7 +91,8 @@
       }
       ,
       handleDoctorOptionSelect(e){
-        this.doctor = e
+        this.initialsForm.doctor = e
+        
       },
       handleClientTypeOptionSelect(e){
         this.initialsForm.clientType=[...e]

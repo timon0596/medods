@@ -20,9 +20,14 @@
         expanded:false
       }
     },
-    props:['values','type','name','error'],
+    props:['values','type','name','error','model'],
     components:{
       checkbox
+    },
+    computed:{
+      cmodel(){
+        return this.model
+      }
     },
     methods:{
       onInput(){
@@ -33,6 +38,12 @@
       },
       
     },
+    watch:{
+      cmodel(){
+        this.selectedValues = this.cmodel?this.selectedValues:[]
+      }
+    }
+
   }
 </script>
 <style lang="sass">
