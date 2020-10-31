@@ -10,11 +10,11 @@
   .initials-form__gender
     label.initials-form__radio
       input(value='мужчина' type='radio' v-model='initialsForm.gender' @change='gender')
-      checkbox(initVal='мужчина' :val='initialsForm.gender')
+      checkbox(initVal='мужчина' :val='initialsForm.gender' type='radio')
       |Мужчина
     label.initials-form__radio
       input(value='женщина' type='radio' v-model='initialsForm.gender' @change='gender')
-      checkbox(initVal='женщина' :val='initialsForm.gender')
+      checkbox(initVal='женщина' :val='initialsForm.gender' type='radio')
       |Женщина
   customSelect(:values='clientType' :error='!$v.initialsForm.clientType.required' title='выберите минимум 1 значение' type='checkbox' @option-select='handleClientTypeOptionSelect($event)' name='Группа клиентов')
   customSelect(:values='doctors' type='radio' name='Лечаший врач' @option-select='handleDoctorOptionSelect')

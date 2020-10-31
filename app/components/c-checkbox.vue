@@ -1,11 +1,8 @@
 <template lang='pug'>
-.custom-checkbox(@click='onClick')
-  template(v-if='type=="radio"')
-    transition(name='mark')
-      .custom-checkbox__mark(v-if='initVal==val')
-  template(v-if='type=="checkbox"')
-    transition(name='mark')
-      .custom-checkbox__mark(v-if='checkedProp')
+label.custom-checkbox
+  input(type="checkbox" :value="val" v-model="model" @change='q($event)')
+  transition(name='mark')
+    .custom-checkbox__mark(v-if='checked')
 </template>
 <script>
   export default {
@@ -14,13 +11,22 @@
         checked: false
       }
     },
-    methods:{
-      onClick(){
-        this.checked=!this.checked
-        this.$emit('change',this.checked)
+    props: [ 'value', 'val' ],
+    computed: {
+      model: {
+         get() {
+           return this.value;
+         },
+         set(val) {
+           this.$emit('input', val);
+         },
+       },
+     },
+     methods:{
+      q(e){
+        this.checked=e.target.checked
       }
-    },
-    props:['initVal','val','type','checkedProp'],
+     }
   }
 </script>
 <style lang='sass'>

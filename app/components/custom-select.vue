@@ -4,17 +4,20 @@
     .custom-select__error(v-if='error') !
     .custom-select__name {{name}}
     .custom-select__expand(:class='{"custom-select__expand_active": expanded}')
-  transition(name='options')  
-    .custom-select__options(v-if='expanded')
-      .custom-select__option(v-for='option,index in values')
-        |{{option}}
+  .custom-select__options-wrapper
+    transition(name='options')  
+      .custom-select__options(v-if='expanded')
+        label.custom-select__option(v-for='option,index in values')
+          checkbox(type='checkbox' :val='option' v-model='checked')
+          |{{option}}
 </template>
 <script>
-  import checkbox from './custom-checkbox.vue'
+  import checkbox from './c-checkbox.vue'
   export default {
     data(){
       return {
         selectedValues: [],
+        checked: [],
         expanded:false
       }
     },
@@ -23,16 +26,14 @@
       checkbox
     },
     methods:{
-      handleClientTypeSelect(e){
-        this.$emit('option-select',this.selectedValues)
+      onChange(e,i){
+        this.checked[i]=e
       },
       expandToggle(){
         this.expanded=!this.expanded
       }
       
     },
-    mounted(){
-    }
   }
 </script>
 <style lang="sass">
@@ -55,6 +56,9 @@
     display: flex
     justify-content: center
     align-items: center
+
+  &__options-wrapper
+    overflow: hidden
 
   &__options
     display: grid
@@ -107,6 +111,5 @@
   transition: all 0.25s
 .options-enter,
 .options-leave-to
-  transform: scale(1, 0)
-
+  transform: translate(0, -100%)
 </style>
