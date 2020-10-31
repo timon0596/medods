@@ -1,8 +1,8 @@
 <template lang='pug'>
 label.custom-checkbox
-  input(type="checkbox" :value="val" v-model="model" @change='q($event)')
+  input(:type="type" :value="val" v-model="model")
   transition(name='mark')
-    .custom-checkbox__mark(v-if='checked')
+    .custom-checkbox__mark(v-if='check')
 </template>
 <script>
   export default {
@@ -11,14 +11,22 @@ label.custom-checkbox
         checked: false
       }
     },
-    props: [ 'value', 'val' ],
+    props: [ 'value', 'val' ,'type','selVal'],
     computed: {
+      check(){
+        if(this.type=='checkbox'){
+          return this.selVal.indexOf(this.val)!=-1
+        }else{
+          return this.value==this.val
+        }
+      },
       model: {
          get() {
            return this.value;
          },
          set(val) {
-           this.$emit('input', val);
+          this.checked=!this.checked
+          this.$emit('input', val);
          },
        },
      },

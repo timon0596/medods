@@ -8,7 +8,7 @@
     transition(name='options')  
       .custom-select__options(v-if='expanded')
         label.custom-select__option(v-for='option,index in values')
-          checkbox(type='checkbox' :val='option' v-model='checked')
+          checkbox(:type='type' :val='option' @input='onInput' v-model='selectedValues' :selVal='selectedValues')
           |{{option}}
 </template>
 <script>
@@ -17,7 +17,6 @@
     data(){
       return {
         selectedValues: [],
-        checked: [],
         expanded:false
       }
     },
@@ -26,12 +25,12 @@
       checkbox
     },
     methods:{
-      onChange(e,i){
-        this.checked[i]=e
+      onInput(){
+        this.$emit('option-select',this.selectedValues)
       },
       expandToggle(){
         this.expanded=!this.expanded
-      }
+      },
       
     },
   }

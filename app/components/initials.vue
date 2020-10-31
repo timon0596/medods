@@ -9,15 +9,25 @@
     .initials-form__pattern(v-if='$v.initialsForm.tel.$invalid&&!telFocused') 7 *** *** ****  
   .initials-form__gender
     label.initials-form__radio
-      input(value='мужчина' type='radio' v-model='initialsForm.gender' @change='gender')
+      input(value='мужчина' type='radio' v-model='initialsForm.gender')
       checkbox(initVal='мужчина' :val='initialsForm.gender' type='radio')
       |Мужчина
     label.initials-form__radio
-      input(value='женщина' type='radio' v-model='initialsForm.gender' @change='gender')
+      input(value='женщина' type='radio' v-model='initialsForm.gender')
       checkbox(initVal='женщина' :val='initialsForm.gender' type='radio')
       |Женщина
-  customSelect(:values='clientType' :error='!$v.initialsForm.clientType.required' title='выберите минимум 1 значение' type='checkbox' @option-select='handleClientTypeOptionSelect($event)' name='Группа клиентов')
-  customSelect(:values='doctors' type='radio' name='Лечаший врач' @option-select='handleDoctorOptionSelect')
+  customSelect(
+    :values='clientType' 
+    :error='!$v.initialsForm.clientType.required' 
+    title='выберите минимум 1 значение' 
+    type='checkbox' 
+    @option-select='handleClientTypeOptionSelect($event)' 
+    name='Группа клиентов')
+  customSelect(
+    :values='doctors'
+    type='radio'
+    name='Лечаший врач'
+    @option-select='handleDoctorOptionSelect')
   .initials-form__sms
     checkbox(type='checkbox' v-model='initialsForm.sms')
     |не отправлять смс
@@ -67,9 +77,6 @@
       checkbox
     },
     methods:{
-      gender(){
-        console.log(this.initialsForm.gender)
-      },
       clear(){
         Object.keys(this.initialsForm).forEach((el,i)=>{
           this.initialsForm[el] = null
@@ -79,7 +86,6 @@
         if(this.$v.initialsForm.$invalid) return
 
         this.$emit('form-data-ready',this.initialsForm)
-        console.log(this.initialsForm)
       }
       ,
       handleDoctorOptionSelect(e){
