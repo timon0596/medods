@@ -9,12 +9,10 @@
     .initials-form__pattern(v-if='$v.initialsForm.tel.$invalid&&!telFocused') 7 *** *** ****  
   .initials-form__gender
     label.initials-form__radio
-      input(value='мужчина' type='radio' v-model='initialsForm.gender')
-      checkbox(initVal='мужчина' :val='initialsForm.gender' type='radio')
+      checkbox(val='мужчина' v-model='initialsForm.gender' type='radio' :selVal='initialsForm.gender')
       |Мужчина
     label.initials-form__radio
-      input(value='женщина' type='radio' v-model='initialsForm.gender')
-      checkbox(initVal='женщина' :val='initialsForm.gender' type='radio')
+      checkbox(val='женщина' v-model='initialsForm.gender' type='radio' :selVal='initialsForm.gender')
       |Женщина
   customSelect(
     :values='clientType' 
@@ -30,8 +28,8 @@
     name='Лечаший врач'
     @option-select='handleDoctorOptionSelect'
     :model='initialsForm.doctor')
-  .initials-form__sms
-    checkbox(type='checkbox' v-model='initialsForm.sms')
+  label.initials-form__sms
+    checkbox(type='checkbox' :val='initialsForm.sms' v-model='initialsForm.sms' single='true')
     |не отправлять смс
   .initials-form__buttons
     .button.button_clear(@click='clear') очистить
@@ -39,7 +37,7 @@
 </template>
 <script>
   import customSelect from './custom-select.vue'
-  import checkbox from './custom-checkbox.vue'
+  import checkbox from './c-checkbox.vue'
   import {required,minLength,helpers} from 'vuelidate/lib/validators'
   const numeric = helpers.regex('numeric', /^7 \d{3} \d{3} \d{4}$/)
   const alpha = helpers.regex('alpha', /^[a-zа-яё]*$/i)
