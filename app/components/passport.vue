@@ -8,6 +8,10 @@
     @option-select='handleDocumentOptionSelect($event)' 
     name='тип документа'
     :model='fields.document')
+  <input type='number' placeholder='серия' v-model='fields.series'>
+  <input type='number' placeholder='номер' v-model='fields.number'>
+  <input type='text' placeholder='кем выдан' v-model='fields.pickUp'>
+  <input type='date' :max='maxDate' placeholder='дата выдачи' :class='{error: !$v.fields.date.required}' v-model='fields.date'>
   .buttons
     .button.button_clear(@click='clear') очистить
     .button.button_accept(:class='{button_disabled: $v.$invalid}' @click='accept') принять
@@ -22,20 +26,27 @@
     data(){
       return {
         documentTypes: ['Паспорт','Свидетельство о рождении','Вод. удостоверение'],
+        maxDate: new Date().toLocaleDateString().split('.').reverse().join('-'),
         fields:{
           document:[],
+          series:null,
+          number:null,
+          pickUp:null,
+          date:null
         }
       }
     },
     validations:{
       fields:{
-        document: {required}
+        document: {required},
+        date:{required}
+
       }
     },
     components:{
       customSelect,
       checkbox
-    },
+    },props:['tab'],
     methods:{
       handleDocumentOptionSelect(e){
         this.fields.document=e
@@ -45,12 +56,12 @@
         for(let key in this.fields){
           this.fields[key] = null
         }
-        
+        this.$emit('form-data-ready',{data:null,i:this.tab})
       },
       accept(){
         if(this.$v.$invalid) return
 
-        this.$emit('form-data-ready',this.$data)
+        this.$emit('form-data-ready',{data:this.fields,i:this.tab})
       },
     },
     mounted(){

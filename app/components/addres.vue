@@ -40,7 +40,7 @@
       area:{alpha},
       street:{alpha},
       house:{house}
-    },
+    },props:['tab'],
     components:{
       customSelect,
       checkbox
@@ -50,12 +50,13 @@
         for(let key in this.$data){
           console.log(this.$data[key] = null)
         }
+        this.$emit('form-data-ready',{data:null,i:this.tab})
         
       },
       accept(){
         if(this.$v.$invalid) return
 
-        this.$emit('form-data-ready',this.$data)
+        this.$emit('form-data-ready',{data:this.$data,i:this.tab})
       },
     },
     mounted(){

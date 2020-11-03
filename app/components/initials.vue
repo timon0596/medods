@@ -3,7 +3,7 @@
   input(type='text' placeholder='фамилия' v-model='initialsForm.surname' :class='{"error": !$v.initialsForm.surname.required||!$v.initialsForm.surname.alpha}')
   input(type='text' placeholder='имя' v-model='initialsForm.name' :class='{"error": !$v.initialsForm.name.required||!$v.initialsForm.name.alpha}')
   input(type='text' placeholder='отчество' v-model='initialsForm.lastname' :class='{error:!$v.initialsForm.lastname.alpha}')
-  input(type='date' placeholder='дата рождения' v-model='initialsForm.birthday' :class='{"error": !$v.initialsForm.birthday.required}')
+  input(type='date' placeholder='дата рождения' :max='maxDate' v-model='initialsForm.birthday' :class='{"error": !$v.initialsForm.birthday.required}')
   .initials-form__tel
     input(type='tel' ref='tel' placeholder='номер телефона' @focus='telFocused=true' @blur='telFocused=false' v-model='initialsForm.tel' :class='{"error":$v.initialsForm.tel.$invalid}')
     .initials-form__pattern(v-if='$v.initialsForm.tel.$invalid&&!telFocused') 7 *** *** ****  
@@ -48,6 +48,7 @@
         doctors:['Иванов', 'Захаров', 'Чернышева'],
         telFocused:false,
         telString:'',
+        maxDate: new Date().toLocaleDateString().split('.').reverse().join('-'),
         initialsForm:{
           sms:false,
           gender: null,
@@ -72,6 +73,7 @@
 
       }
     },
+    props:['tab'],
     components:{
       customSelect,
       checkbox
@@ -81,11 +83,12 @@
         Object.keys(this.initialsForm).forEach((el,i)=>{
           this.initialsForm[el] = null
         })
+        this.$emit('form-data-ready',{data:null,i:this.tab})
       },
       accept(){
         if(this.$v.initialsForm.$invalid) return
 
-        this.$emit('form-data-ready',this.initialsForm)
+        this.$emit('form-data-ready',{data:this.initialsForm,i:this.tab})
       }
       ,
       handleDoctorOptionSelect(e){
@@ -108,6 +111,7 @@
       }
     },
     mounted(){
+      console.log(this.maxDate)
       this.$refs.tel.addEventListener('keyup', this.reg)
       this.$refs.tel.addEventListener('blur', this.handleTelBlur)
     }
@@ -117,6 +121,7 @@
 @import './../vars.sass'
 
 .button
+  width: 100%
   display: flex
   justify-content: center
   align-items: center
@@ -152,17 +157,20 @@ input
 
 .form-block
   min-width: 320px
-  width: min-content
   display: grid
   grid-gap: 30px
   padding: 40px
   border-radius: 5px
   border: 1px solid #ccc
+  border-top: 0
+  border-top-right-radius: 0
+  border-top-left-radius: 0
 
 .buttons
-  display: flex
-  justify-content: space-between
-  
+  display: grid
+  grid-gap: 5px
+  grid-auto-flow: column
+
 .initials-form
   &__sms
     display: grid 
