@@ -1,5 +1,5 @@
 <template lang='pug'>
-.initials-form
+.initials-form.form-block
   input(type='text' placeholder='фамилия' v-model='initialsForm.surname' :class='{"error": !$v.initialsForm.surname.required||!$v.initialsForm.surname.alpha}')
   input(type='text' placeholder='имя' v-model='initialsForm.name' :class='{"error": !$v.initialsForm.name.required||!$v.initialsForm.name.alpha}')
   input(type='text' placeholder='отчество' v-model='initialsForm.lastname' :class='{error:!$v.initialsForm.lastname.alpha}')
@@ -31,7 +31,7 @@
   label.initials-form__sms
     checkbox(type='checkbox' :val='initialsForm.sms' v-model='initialsForm.sms' single='true')
     |не отправлять смс
-  .initials-form__buttons
+  .initials-form__buttons.buttons
     .button.button_clear(@click='clear') очистить
     .button.button_accept(:class='{button_disabled: $v.initialsForm.$invalid}' @click='accept') принять
 </template>
@@ -142,13 +142,15 @@ input
   border: 1px solid #cccccc
   border-radius: 3px
   outline: none
-  color: #cccccc
+  color: #333
   font-size: 11px
   font-family: Tahoma
   padding: 10px 20px
   box-sizing: border-box
+  &::placeholder
+    color: #ccc
 
-.initials-form
+.form-block
   min-width: 320px
   width: min-content
   display: grid
@@ -157,9 +159,11 @@ input
   border-radius: 5px
   border: 1px solid #ccc
 
-  &__buttons
-    display: flex
-    justify-content: space-between
+.buttons
+  display: flex
+  justify-content: space-between
+  
+.initials-form
   &__sms
     display: grid 
     grid-auto-flow: column  
@@ -184,11 +188,11 @@ input
     align-items: center
     position: relative
 
-  .error
-    border: 1px solid $error
+.error
+  border: 1px solid $error
 
-    &_select
-      border-right: 0
-      border-bottom: 0
+  &_select
+    border-right: 0
+    border-bottom: 0
 
 </style>
