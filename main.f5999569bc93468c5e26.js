@@ -155,17 +155,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./app sync recursive ./!./!./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./ \\.(svg|png|ico|xml|json)$":
-/*!***********************************************************************************************************!*\
-  !*** ./app sync !./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext] \.(svg|png|ico|xml|json)$ ***!
-  \***********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var map = {\n\t\"./icon/android-chrome-192x192.png\": \"./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/android-chrome-192x192.png\",\n\t\"./icon/android-chrome-384x384.png\": \"./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/android-chrome-384x384.png\",\n\t\"./icon/apple-touch-icon.png\": \"./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/apple-touch-icon.png\",\n\t\"./icon/browserconfig.xml\": \"./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/browserconfig.xml\",\n\t\"./icon/favicon-16x16.png\": \"./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/favicon-16x16.png\",\n\t\"./icon/favicon-32x32.png\": \"./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/favicon-32x32.png\",\n\t\"./icon/favicon.ico\": \"./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/favicon.ico\",\n\t\"./icon/mstile-150x150.png\": \"./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/mstile-150x150.png\",\n\t\"./icon/safari-pinned-tab.svg\": \"./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/safari-pinned-tab.svg\"\n};\n\n\nfunction webpackContext(req) {\n\tvar id = webpackContextResolve(req);\n\treturn __webpack_require__(id);\n}\nfunction webpackContextResolve(req) {\n\tif(!__webpack_require__.o(map, req)) {\n\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t}\n\treturn map[req];\n}\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = \"./app sync recursive ./!./!./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./ \\\\.(svg|png|ico|xml|json)$\";\n\n//# sourceURL=webpack:///./node_modules/file-loader/dist/cjs.js?./app_sync_");
-
-/***/ }),
-
 /***/ "./app/app.vue":
 /*!*********************!*\
   !*** ./app/app.vue ***!
@@ -462,7 +451,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.runtime.esm.js\");\n/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate */ \"./node_modules/vuelidate/lib/index.js\");\n/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _app_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.vue */ \"./app/app.vue\");\n\n\n\n\nvar faviconsContext = __webpack_require__(\"./app sync recursive ./!./!./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./ \\\\.(svg|png|ico|xml|json)$\");\n\nfaviconsContext.keys().forEach(faviconsContext);\nvue__WEBPACK_IMPORTED_MODULE_0__[\"default\"].use(vuelidate__WEBPACK_IMPORTED_MODULE_1___default.a);\nnew vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n  el: '.app',\n  render: function render(h) {\n    return h(_app_vue__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\n  }\n});\n\n//# sourceURL=webpack:///./app/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.runtime.esm.js\");\n/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate */ \"./node_modules/vuelidate/lib/index.js\");\n/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _app_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.vue */ \"./app/app.vue\");\n\n\n\nvue__WEBPACK_IMPORTED_MODULE_0__[\"default\"].use(vuelidate__WEBPACK_IMPORTED_MODULE_1___default.a);\nnew vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n  el: '.app',\n  render: function render(h) {\n    return h(_app_vue__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\n  }\n});\n\n//# sourceURL=webpack:///./app/index.js?");
 
 /***/ }),
 
@@ -535,105 +524,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _cus
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _custom_select_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./custom-select.vue */ \"./app/components/custom-select.vue\");\n/* harmony import */ var _c_checkbox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./c-checkbox.vue */ \"./app/components/c-checkbox.vue\");\n/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate/lib/validators */ \"./node_modules/vuelidate/lib/validators/index.js\");\n/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__);\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n\n\n\nvar numeric = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__[\"helpers\"].regex('numeric', /\\d?/);\nvar alpha = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__[\"helpers\"].regex('alpha', /^[a-zа-яё-]*$/i);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  data: function data() {\n    return {\n      documentTypes: ['Паспорт', 'Свидетельство о рождении', 'Вод. удостоверение'],\n      maxDate: new Date().toLocaleDateString().split('.').reverse().join('-'),\n      fields: {\n        document: [],\n        series: null,\n        number: null,\n        pickUp: null,\n        date: null\n      }\n    };\n  },\n  validations: {\n    fields: {\n      document: {\n        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__[\"required\"]\n      },\n      date: {\n        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__[\"required\"]\n      }\n    }\n  },\n  components: {\n    customSelect: _custom_select_vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n    checkbox: _c_checkbox_vue__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n  },\n  props: ['tab'],\n  methods: {\n    handleDocumentOptionSelect: function handleDocumentOptionSelect(e) {\n      this.fields.document = e;\n    },\n    clear: function clear() {\n      for (var key in this.fields) {\n        this.fields[key] = null;\n      }\n\n      this.$emit('form-data-ready', {\n        data: null,\n        i: this.tab\n      });\n    },\n    accept: function accept() {\n      if (this.$v.$invalid) return;\n      this.$emit('form-data-ready', {\n        data: this.fields,\n        i: this.tab\n      });\n    }\n  },\n  mounted: function mounted() {}\n});\n\n//# sourceURL=webpack:///./app/components/passport.vue?./node_modules/babel-loader/lib??ref--2!./node_modules/vue-loader/lib??vue-loader-options");
-
-/***/ }),
-
-/***/ "./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/android-chrome-192x192.png":
-/*!***********************************************************************************************************!*\
-  !*** ./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/android-chrome-192x192.png ***!
-  \***********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"icon/android-chrome-192x192.png\";\n\n//# sourceURL=webpack:///./app/icon/android-chrome-192x192.png?./node_modules/file-loader/dist/cjs.js?name=icon/%5Bname%5D.%5Bext%5D");
-
-/***/ }),
-
-/***/ "./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/android-chrome-384x384.png":
-/*!***********************************************************************************************************!*\
-  !*** ./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/android-chrome-384x384.png ***!
-  \***********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"icon/android-chrome-384x384.png\";\n\n//# sourceURL=webpack:///./app/icon/android-chrome-384x384.png?./node_modules/file-loader/dist/cjs.js?name=icon/%5Bname%5D.%5Bext%5D");
-
-/***/ }),
-
-/***/ "./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/apple-touch-icon.png":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/apple-touch-icon.png ***!
-  \*****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"icon/apple-touch-icon.png\";\n\n//# sourceURL=webpack:///./app/icon/apple-touch-icon.png?./node_modules/file-loader/dist/cjs.js?name=icon/%5Bname%5D.%5Bext%5D");
-
-/***/ }),
-
-/***/ "./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/browserconfig.xml":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/browserconfig.xml ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"icon/browserconfig.xml\";\n\n//# sourceURL=webpack:///./app/icon/browserconfig.xml?./node_modules/file-loader/dist/cjs.js?name=icon/%5Bname%5D.%5Bext%5D");
-
-/***/ }),
-
-/***/ "./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/favicon-16x16.png":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/favicon-16x16.png ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"icon/favicon-16x16.png\";\n\n//# sourceURL=webpack:///./app/icon/favicon-16x16.png?./node_modules/file-loader/dist/cjs.js?name=icon/%5Bname%5D.%5Bext%5D");
-
-/***/ }),
-
-/***/ "./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/favicon-32x32.png":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/favicon-32x32.png ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"icon/favicon-32x32.png\";\n\n//# sourceURL=webpack:///./app/icon/favicon-32x32.png?./node_modules/file-loader/dist/cjs.js?name=icon/%5Bname%5D.%5Bext%5D");
-
-/***/ }),
-
-/***/ "./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/favicon.ico":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/favicon.ico ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"icon/favicon.ico\";\n\n//# sourceURL=webpack:///./app/icon/favicon.ico?./node_modules/file-loader/dist/cjs.js?name=icon/%5Bname%5D.%5Bext%5D");
-
-/***/ }),
-
-/***/ "./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/mstile-150x150.png":
-/*!***************************************************************************************************!*\
-  !*** ./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/mstile-150x150.png ***!
-  \***************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"icon/mstile-150x150.png\";\n\n//# sourceURL=webpack:///./app/icon/mstile-150x150.png?./node_modules/file-loader/dist/cjs.js?name=icon/%5Bname%5D.%5Bext%5D");
-
-/***/ }),
-
-/***/ "./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/safari-pinned-tab.svg":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/file-loader/dist/cjs.js?name=icon/[name].[ext]!./app/icon/safari-pinned-tab.svg ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"icon/safari-pinned-tab.svg\";\n\n//# sourceURL=webpack:///./app/icon/safari-pinned-tab.svg?./node_modules/file-loader/dist/cjs.js?name=icon/%5Bname%5D.%5Bext%5D");
 
 /***/ }),
 
