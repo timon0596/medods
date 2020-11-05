@@ -1,0 +1,236 @@
+input[type='radio'],
+input[type='checkbox'] {
+  display: none;
+}
+.custom-checkbox {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #6b5b95;
+  border-radius: 20%;
+}
+.custom-checkbox__mark {
+    width: 6px;
+    height: 12px;
+    border: 3px solid #6b5b95;
+    border-top: 0;
+    border-left: 0;
+    border-radius: 15%;
+    transform-origin: 100% 100%;
+    transform: rotate(45deg) translate(-50%, 0);
+    position: absolute;
+}
+.mark-enter-active,
+.mark-leave-active {
+  transition: all 0.25s ease;
+}
+.mark-enter,
+.mark-leave-to {
+  transform: rotate(0deg) translate(-50%, 0);
+  opacity: 0;
+}
+
+.custom-select {
+  display: grid;
+  grid-gap: 10px;
+  padding: 5px;
+  border-top-left-radius: 3px;
+}
+.custom-select__error {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    font-size: 25px;
+    transform: translate(-100%, 0);
+    color: #d64161;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.custom-select__options-wrapper {
+    overflow: hidden;
+}
+.custom-select__options {
+    display: grid;
+    grid-gap: 10px;
+    transform-origin: 0 0;
+}
+.custom-select__option {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 5px;
+    justify-content: start;
+}
+.custom-select__header {
+    position: relative;
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.custom-select__expand {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+.custom-select__expand:after {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 3px solid #6b5b95;
+      border-left: 0;
+      border-top: 0;
+      border-radius: 3px;
+      transform-origin: 100% 100%;
+      transform: translate(-50%, 0) rotate(45deg);
+      box-sizing: border-box;
+}
+.custom-select__expand_active {
+      transform: rotate(180deg);
+}
+.options-enter-active,
+.options-leave-active {
+  transition: all 0.25s;
+}
+.options-enter,
+.options-leave-to {
+  transform: translate(0, -100%);
+}
+
+.button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 3px;
+  border: 1px solid;
+  cursor: pointer;
+}
+.button:active, .button_disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+.button_accept {
+    color: #6b5b95;
+    border-color: #6b5b95;
+}
+.button_clear {
+    color: #feb236;
+    border-color: #feb236;
+}
+input {
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  outline: none;
+  color: #333;
+  font-size: 11px;
+  font-family: Tahoma;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+input::-moz-placeholder {
+    color: #ccc;
+}
+input:-ms-input-placeholder {
+    color: #ccc;
+}
+input::placeholder {
+    color: #ccc;
+}
+.form-block {
+  min-width: 320px;
+  display: grid;
+  grid-gap: 30px;
+  padding: 40px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  border-top: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+.buttons {
+  display: grid;
+  grid-gap: 5px;
+  grid-auto-flow: column;
+}
+.initials-form__sms {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 5px;
+  justify-content: center;
+}
+.initials-form__tel {
+  display: grid;
+  grid-gap: 5px;
+  justify-items: center;
+}
+.initials-form__tel input {
+    justify-self: stretch;
+}
+.initials-form__gender {
+  display: flex;
+  justify-content: space-around;
+}
+.initials-form label {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 10px;
+  align-items: center;
+  position: relative;
+}
+.error {
+  border: 1px solid #d64161;
+}
+.error_select {
+    border-right: 0;
+    border-bottom: 0;
+}
+
+
+
+* {
+  box-sizing: border-box;
+}
+.form-container {
+  display: grid;
+  grid-gap: 5px;
+  justify-content: center;
+}
+.form {
+  justify-self: start;
+}
+.nav {
+  display: grid;
+  grid-auto-flow: column;
+}
+.current-tab {
+  border-bottom: 0;
+}
+.tab {
+  border-color: #ccc;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.success-message {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 3px;
+  border: 1px solid #82b74b;
+  cursor: pointer;
+  color: #82b74b;
+}
+
